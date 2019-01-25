@@ -5,3 +5,9 @@ Some ideas to use:
 - ears/LED combination to animate.
 - What final shape ? Rabbit, other animal, beholder (AD&D), floating robot/tau turret like robot.
 - Use RPi most likely + Arduino Nano
+
+Codename M.A.R.C.E.L
+
+**M**inimalist **A**utonomous **R**obot **C**onstantly **E**xperiencing **L**ife
+ 
+
