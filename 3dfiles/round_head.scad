@@ -69,16 +69,37 @@ module round_eye(radius, length)
 }
 
 module eye_placeholder(radius, length){ rotate([0,90,0]){ cylinder(r=radius, h=length, center=true); } }
+
+
+rotate([0,45,0])
+{
+    round_top(h_radius, h_thickness);
+    round_bottom(h_radius, h_thickness);
+}
+translate([0.60*h_radius,0,0.1*h_radius]){ round_eye(h_radius, 0.2*h_radius); }
+translate([0.60*h_radius,0,-0.35*h_radius]){ round_eye(h_radius, 0.2*h_radius); }
+
 difference()
 {
-round_top(h_radius, h_thickness);
-translate([0.80*h_radius,0,0]){ eye_placeholder(0.2*h_radius, 0.2*h_radius); }
+//round_top(h_radius, h_thickness);
+//translate([0.80*h_radius,0,0]){ eye_placeholder(0.2*h_radius, 0.2*h_radius); }
 //translate([0.80*h_radius,0,0]){ round_eye(h_radius, 0.2*h_radius); }
 }
 //difference()
 {
-round_bottom(h_radius, h_thickness);
-translate([0.80*h_radius,0,0]){ eye_placeholder(0.2*h_radius, 0.2*h_radius); }
+//round_bottom(h_radius, h_thickness);
+//translate([0.80*h_radius,0,0]){ eye_placeholder(0.2*h_radius, 0.2*h_radius); }
 //translate([0.80*h_radius,0,0]){ round_eye(h_radius, 0.2*h_radius); }
 }
 //translate([0.80*h_radius,0,0]){ round_eye(h_radius); }
+
+/*
+
+// IMPORTED HC-SR04 US MODEL
+translate([0, 0, 0])
+{
+rotate([0,90,0])
+{
+    import("/home/erwan/Documents/RobotMaker/cad-library/HC-SR04_-_Ultrasonic_sensor_fingerprint_Empreinte_Ultrason/files/us.stl");
+}
+}*/
