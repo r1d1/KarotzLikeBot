@@ -1,4 +1,4 @@
-This project is the design of a small assistant robot inspired by the Karotz/Nabaztag products.
+This project is the design of a small companion robot inspired by the Karotz/Nabaztag products.
 
 Some ideas to use:
 - use cron to generate random autonomous behaviors.
