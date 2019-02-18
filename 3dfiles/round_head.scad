@@ -130,14 +130,12 @@ rotate([0,90,0])
 }
 }
 
-
 // OUTSIDE SHELL
 base_radius = 50;
 base_height = 25;
 mid_height = 75;
 base_thickness = 5;
 // base
-
 difference()
 {
     color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
@@ -164,6 +162,7 @@ translate([-0.65*base_radius,0.,mid_height*0.15]){ rotate([90,0,0]){ color([0.,0
 }
 
 translate([10.,0.,base_height+mid_height+0.75*h_radius])
+//rotate([0,-60,0])
 {
     head_top_shell();
     // IMPORTED HC-SR04 US MODEL
@@ -172,7 +171,6 @@ translate([10.,0.,base_height+mid_height+0.75*h_radius])
     //rotate([0,90,0]){ full_sensor(); }
     }
 }
-
 
 
 translate([0,0,40])
