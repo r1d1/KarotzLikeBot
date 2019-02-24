@@ -1,0 +1,17 @@
+[M.A.R.C.E.L] #02 - Specifications
+
+Pour ce robot, le but n'est pas de faire très compliqué ou très poussé, mais d'avoir un petit robot autonome et sympathique. Voici quelques contraintes/particularités voulues :
+- Tient sur un bureau
+- Est autonome
+- Produit un engagement émotionnel
+- Est extensible
+
+Capteurs:
+- 2 photoresistors LDR (2)
+- 1 capteur US/Ping (1 ou 2)
+- 1 microphone (1)
+
+Actionneurs
+- 1 haut-parleur/buzzer (1)
+- 2 servo (1 x2)
+- 1 LED RGB (3)
