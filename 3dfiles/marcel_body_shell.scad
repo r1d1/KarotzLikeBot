@@ -8,3 +8,7 @@
  *
  * Licence : CC-By-SA
  * */
+
+include <round_head.scad>
+
+rotate([0., -60., 0.]){ head_top_shell(); }

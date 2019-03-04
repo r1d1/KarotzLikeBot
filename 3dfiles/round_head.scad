@@ -138,12 +138,19 @@ mid_height = 75;
 base_thickness = 5;
 // base
 
+// to clean and reorganize
+module base_shell()
+{
 difference()
 {
     color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
     translate([0.,0.,base_thickness]){ cylinder(r=base_radius-base_thickness, h=base_height, $fn=200, center=false); }
 }
+}
 
+// to clean and reorganize
+module body_head_shell()
+{
 // middle
 mid_factor = 0.7;
 intersection()
@@ -172,9 +179,10 @@ translate([10.,0.,base_height+mid_height+0.75*h_radius])
     //rotate([0,90,0]){ full_sensor(); }
     }
 }
+}
 
-
-
+module arduino_placeholder()
+{
 translate([0,0,40])
 {
     rotate([0,-90,0])
@@ -186,4 +194,5 @@ translate([0,0,40])
         import("/home/erwan/Documents/RobotMaker/cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
         }
     }
+}
 }
