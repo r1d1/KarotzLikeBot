@@ -1,0 +1,14 @@
+[M.A.R.C.E.L] #01 - Origine
+
+Ce projet, une fois n'est pas coutume, commence avec une histoire sympathique: j'ai décidé assez tôt que je voulais faire de la robotique, probablement une combinaison de mon environnement familial, de mes lectures (SF, Science et Vie junior, etc.). Et comme pour tous les gamins, "tu veux faire quoi quand tu seras grand ?" fait partie des questions qu'on entend d'un peu toute la famille.
+
+Et quand on est gamin, on n'a pas la même notion des choses que quand on est adulte. Alors quand tonton K. m'a fait promettre que mon premier robot serait pour lui, j'ai dit oui ! :D Sauf que des robots, je n'ai vraiment commencé à en construire par moi-même en 2011-2012. Et entretemps, la vie étant ce qu'elle est, j'ai moins vu tonton K. Techniquement, je n'ai donc jamais rempli ma promesse (ni fini un projet perso de robot, mais c'est une autre histoire).
+
+Et à Noël de cette année, j'ai revu tonton K., qui a fait la blague une fois de plus. Comme à chaque fois, je ne pense pas qu'il s'attende réellement à ce que ça arrive. Très bien, donc cette fois-ci, [i]challenge accepted ![/i]
+
+Marcel est donc la concrétisation de cette promesse d'enfant et d'un ensemble de projets qui me trottent dans la tête depuis un moment:
+- un robot assistant/compagnon, statique, inspiré par Karotz/Nabaztag, un robot qui m'a pas mal influencé (voir le [post] que j'avais fait sur les étapes de design de ce projet)
+- un système autonome, prévu pour fonctionner pendant de longues périodes de temps et "vivre" sa vie de robot.
+- un robot avec lequel l'interaction est naturelle: pas de clavier/bouton ou d'écran, on doit pouvoir envoyer de l'information sans outil (donc voix, geste/présence, ...) et en recevoir de même (en interprétant l'attitude du robot).
+
+Ma promesse est en quelque sort le contexte pour ces idées là. On verra jusqu'où j'arrive !

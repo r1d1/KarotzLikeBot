@@ -130,17 +130,19 @@ rotate([0,90,0])
 }
 }
 
-
 // OUTSIDE SHELL
 base_radius = 50;
 base_height = 25;
 mid_height = 75;
 base_thickness = 5;
 // base
+<<<<<<< HEAD
 
 // to clean and reorganize
 module base_shell()
 {
+=======
+>>>>>>> 2e8bbf9d5793e4d6a1d624149f1d9eadae1826e0
 difference()
 {
     color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
@@ -171,6 +173,7 @@ translate([-0.65*base_radius,0.,mid_height*0.15]){ rotate([90,0,0]){ color([0.,0
 }
 
 translate([10.,0.,base_height+mid_height+0.75*h_radius])
+//rotate([0,-60,0])
 {
     head_top_shell();
     // IMPORTED HC-SR04 US MODEL
@@ -181,8 +184,12 @@ translate([10.,0.,base_height+mid_height+0.75*h_radius])
 }
 }
 
+<<<<<<< HEAD
 module arduino_placeholder()
 {
+=======
+
+>>>>>>> 2e8bbf9d5793e4d6a1d624149f1d9eadae1826e0
 translate([0,0,40])
 {
     rotate([0,-90,0])
