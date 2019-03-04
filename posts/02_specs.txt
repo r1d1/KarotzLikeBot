@@ -6,12 +6,27 @@ Pour ce robot, le but n'est pas de faire très compliqué ou très poussé, mais
 - Produit un engagement émotionnel
 - Est extensible
 
-Capteurs:
+J'ai conçu le système itérativement: des idées de design inspirées notamment de la culture pop (Warhammer 40k, Portal, etc.), puis raffinées en fonction des comportements voulus. Une partie importante du projet réside dans sa programmation, je reviendrai là-dessus dans un autre post.
+
+# Électronique:
+
+ Je me suis arrêté sur la liste d'entrées/sorties suivantes:
+
+Capteurs
 - 2 photoresistors LDR (2)
-- 1 capteur US/Ping (1 ou 2)
+- 1 capteur US/Ping (1)
 - 1 microphone (1)
+- N capteur de contact (N)
 
 Actionneurs
 - 1 haut-parleur/buzzer (1)
-- 2 servo (1 x2)
+- 2 servo (2)
 - 1 LED RGB (3)
+
+Comme le robot sera immobile, pas besoin d'actionnement mécanique complexe: on part sur un système de tourelle pan-tilt qui va orienter la tête par rapport au corps.
+Avec le design actuel, j'ai deux degrés de liberté pour orienter la tête. Idéalement, je pourrais en rajouter un 3ème pour enrichir la palette de mouvements et d'émotions, en pratique, je peux un prototype fonctionnel assez rapidement, donc je préfère limiter la complexité mécanique (qui n'est pas du tout ma force).
+
+On n'y pense pas toujours, mais des LED et des buzzers/haut-parleurs sont des sorties faciles à mettre en oeuvre mais avec un certain potentiel pour exprimer des émotions. Ici le but n'est pas tant d'intéragir physiquement avec l'environnement que de "communiquer" avec des humains.
+
+En terme de capteurs, j'ai choisi d'avoir plusieurs modalités (type de signaux captés) pour varier les informations reçues sur l'environnement. Un des buts est d'estimer une notion "d'activité locale" dans les environs du robot: s'il n'y a personne, ou que les personnes sont éloignées du robot, l'activité est faible ; s'il y a des gens proches, qui tentent d'interagir, l'activité doit être haute. Ces capteurs couvrent plusieurs types d'interaction: vocale (microphone), tactile (contact), présence (Ultrason et LDR).
+Pourquoi ne pas mettre une caméra ? La principale raison est que le traitement des images est potentiellement lourd et peu évident. Je veux conserver un robot assez simple, et la camera + les capacités de traitement sont probablement gâchées dans ce cas. Par contre, j'envisage d'en ajouter une pour la v2.
