@@ -1,5 +1,5 @@
-#!/usr/bin/bash
+# Using the script
 
-   ``̀ 
-     python fetch_external_models.py --output ../3dfiles/ --file ../3dfiles/external.json 
-   ̀̀ ``̀ 
+```python
+    python fetch_external_models.py --output ../3dfiles/ --file ../3dfiles/external.json
+```
