@@ -2,46 +2,6 @@
 h_radius=60;
 h_thickness = 0.1;
 
-// ======================================
-// Head from sphere and cut
-module round_top(radius=50, hat_thickness=0.2)
-{
-    color([1.,0.,0.])
-    {
-    difference()
-    {
-        // Main round shape
-        translate([0,0,-0.5*radius])
-        {
-            difference()
-            {
-                sphere(r=radius, $fn=100, center=true);
-                sphere(r=(1.0-hat_thickness)*radius, $fn=100, center=true);
-            }
-        }
-        // cylinder was translated -0.15*radius on z
-        translate([0.,0.,-0.8*radius]){ cylinder(r=1.05*radius, h=1.6*radius, center=true); }
-    }
-    }
-}
-
-//round_top(h_radius, h_thickness);
-
-// ======================================
-module round_bottom(radius=50, hat_thickness=0.2)
-{
-    points_head = [[0.,0.], [hat_thickness*radius, 0.], [hat_thickness*radius, -0.05*radius], [0., -0.1*radius], [-10*hat_thickness,-0.1*radius], [-10*hat_thickness,0.]]; 
-    rotate_extrude(angle = 30, convexity = 10, $fn=200) 
-    {
-        translate([0.85*(1.-hat_thickness)*radius, 0, 0])
-        {
-            polygon(points=points_head);
-            //for( i = points_head ){ translate(i){ sphere(r=0.25, center=true, $fn=50); } }
-        }
-    }
-};
-
-//round_bottom(h_radius, h_thickness);
 
 // ======================================
 // round head
@@ -83,41 +43,6 @@ module round_eye(radius=12, length=10)
 // ======================================
 module eye_placeholder(radius, length){ rotate([0,90,0]){ cylinder(r=radius, h=length, center=true); } }
 //translate([0,-15,0]){ eye_placeholder(12,10); }
-// ======================================
-
-front_offset = 14;
-side_offset = -10;
-vert_offset = -13;
-
-// ======================================
-// Head top shell
-module head_top_shell()
-{
-    difference()
-    {
-        rotate([0,60,0])
-        {
-            scale([1.0,0.8,1.0])
-            {
-                round_top(h_radius, h_thickness);
-                round_bottom(h_radius, h_thickness);
-            }
-        }
-        // US sensor holes
-        rotate([0,90,0])
-        {
-            color([1.0,0.0,0.0])
-            {
-                translate([16/2+1+vert_offset,18/2+1+side_offset,1.3+front_offset])
-                { cylinder(r=8.5, h=25); }
-                translate([16/2+27+1+vert_offset,18/2+1+side_offset,1.3+front_offset])
-                { cylinder(r=8.5, h=25); }
-            }
-        }
-    }
-}
-
-//head_top_shell();
 
 // ======================================
 
@@ -151,25 +76,6 @@ translate([13, -10, 13])
     }
 }*/
 
-// OUTSIDE SHELL
-base_radius = 50;
-base_height = 25;
-mid_height = 75;
-base_thickness = 5;
-// base
-
-// ======================================
-// to clean and reorganize
-module base_shell()
-{
-    difference()
-    {
-        color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
-        translate([0.,0.,base_thickness]){ cylinder(r=base_radius-base_thickness, h=base_height, $fn=200, center=false); }
-    }
-}
-
-//base_shell();
 
 // ======================================
 // to clean and reorganize
