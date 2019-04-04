@@ -1,10 +1,10 @@
-
 // mm
 h_radius=60;
 h_thickness = 0.1;
 
+// ======================================
 // Head from sphere and cut
-module round_top(radius, hat_thickness)
+module round_top(radius=50, hat_thickness=0.2)
 {
     color([1.,0.,0.])
     {
@@ -25,7 +25,10 @@ module round_top(radius, hat_thickness)
     }
 }
 
-module round_bottom(radius, hat_thickness)
+//round_top(h_radius, h_thickness);
+
+// ======================================
+module round_bottom(radius=50, hat_thickness=0.2)
 {
     points_head = [[0.,0.], [hat_thickness*radius, 0.], [hat_thickness*radius, -0.05*radius], [0., -0.1*radius], [-10*hat_thickness,-0.1*radius], [-10*hat_thickness,0.]]; 
     rotate_extrude(angle = 30, convexity = 10, $fn=200) 
@@ -38,23 +41,30 @@ module round_bottom(radius, hat_thickness)
     }
 };
 
+//round_bottom(h_radius, h_thickness);
+
+// ======================================
 // round head
+// Test of generation with extrusion
 module round_hat()
 {
-    difference()
+    //difference()
     {
-        round_top();
+        round_top(h_radius, h_thickness);
         translate([0,0,-10])
         {
             rotate_extrude(angle=30, $fn=200)
             {
-            translate([168,0,0]){ square([20,20]); }
+                translate([168,0,0]){ square([20,20]); }
             }
         }
     }
 }
 
-module round_eye(radius, length)
+//round_hat();
+
+// ======================================
+module round_eye(radius=12, length=10)
 {
     // length = 0.2* radius seems nice
     // eye
@@ -62,19 +72,24 @@ module round_eye(radius, length)
     { 
         difference()
         {
-        cylinder(r=0.2*radius, h=length, center=true);
-        translate([0,0,0.0875*radius]){ color([0.1,0.1,0.9,0.4]){ cylinder(r=0.175*radius, h=0.0625*radius, center=true); } }
+        cylinder(r=radius, h=length, center=true);
+        translate([0,0,0.5*length]){ color([0.1,0.1,0.9,0.4]){ cylinder(r=0.875*radius, h=0.3125*radius, center=true); } }
         }
     }
 }
 
-module eye_placeholder(radius, length){ rotate([0,90,0]){ cylinder(r=radius, h=length, center=true); } }
+//translate([0,15,0]){ round_eye(); }
 
+// ======================================
+module eye_placeholder(radius, length){ rotate([0,90,0]){ cylinder(r=radius, h=length, center=true); } }
+//translate([0,-15,0]){ eye_placeholder(12,10); }
+// ======================================
 
 front_offset = 14;
 side_offset = -10;
 vert_offset = -13;
 
+// ======================================
 // Head top shell
 module head_top_shell()
 {
@@ -102,6 +117,10 @@ module head_top_shell()
     }
 }
 
+//head_top_shell();
+
+// ======================================
+
 //translate([0.60*h_radius,0,0.1*h_radius]){ round_eye(h_radius, 0.2*h_radius); }
 //translate([0.60*h_radius,0,-0.35*h_radius]){ round_eye(h_radius, 0.2*h_radius); }
 
@@ -117,18 +136,20 @@ translate([0.80*h_radius,0,0]){ round_eye(h_radius); }
 
 
 
-include <../../cad-library/US_sensor_HC-SR04/hc-sr04-ultrasonic-sensor.scad>
+// ======================================
+//include <../../cad-library/US_sensor_HC-SR04/hc-sr04-ultrasonic-sensor.scad>
 // IMPORTED HC-SR04 US MODEL
+/*
 translate([13, -10, 13])
 {
-rotate([0,90,0])
-{
-//    import("/home/erwan/Documents/RobotMaker/cad-library/HC-SR04_-_Ultrasonic_sensor_fingerprint_Empreinte_Ultrason/files/us.stl");
-    //import("/home/erwan/Documents/RobotMaker/cad-library/PING_sensor_holder/files/PingBlock-v1.stl");
-    //import("/home/erwan/Documents/RobotMaker/cad-library/US_sensor_HC-SR04/hc-sr04-ultrasonic-sensor.scad");
-    //full_sensor();
-}
-}
+    rotate([0,90,0])
+    {
+        import("/home/erwan/Documents/RobotMaker/cad-library/HC-SR04_-_Ultrasonic_sensor_fingerprint_Empreinte_Ultrason/files/us.stl");
+        import("/home/erwan/Documents/RobotMaker/cad-library/PING_sensor_holder/files/PingBlock-v1.stl");
+        import("/home/erwan/Documents/RobotMaker/cad-library/US_sensor_HC-SR04/hc-sr04-ultrasonic-sensor.scad");
+        //full_sensor();
+    }
+}*/
 
 // OUTSIDE SHELL
 base_radius = 50;
@@ -137,62 +158,77 @@ mid_height = 75;
 base_thickness = 5;
 // base
 
+// ======================================
 // to clean and reorganize
 module base_shell()
 {
-difference()
-{
-    color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
-    translate([0.,0.,base_thickness]){ cylinder(r=base_radius-base_thickness, h=base_height, $fn=200, center=false); }
-}
-}
-
-// to clean and reorganize
-module body_head_shell()
-{
-// middle
-mid_factor = 0.7;
-intersection()
-{
-translate([0.,0.,base_height])
-{
     difference()
     {
-        difference()
-        {
-            color([1.0, 1.0, 1.0]){ cylinder(r1=base_radius, r2=mid_factor*base_radius,  h=mid_height+1, $fn=200, center=false); }
-            translate([0.,0.,base_thickness]){ cylinder(r1=base_radius-base_thickness, r2=mid_factor*(base_radius-base_thickness), h=mid_height, $fn=200, center=false); }
-        }
-        //translate([30.,0.,mid_height]){ rotate([0,90,0]){ cylinder(r=25,h=30, $fn=200, center=true); } }
+        color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
+        translate([0.,0.,base_thickness]){ cylinder(r=base_radius-base_thickness, h=base_height, $fn=200, center=false); }
     }
 }
-translate([-0.65*base_radius,0.,mid_height*0.15]){ rotate([90,0,0]){ color([0.,0.,1.0, 0.2]){ cylinder(r=90,h=120, $fn=200, center=true); } } }
-}
 
-translate([10.,0.,base_height+mid_height+0.75*h_radius])
-//rotate([0,-60,0])
+//base_shell();
+
+// ======================================
+// to clean and reorganize
+module body_shell()
 {
-    head_top_shell();
-    // IMPORTED HC-SR04 US MODEL
-    translate([18, -10, 13])
+    // middle
+    mid_factor = 0.7;
+    intersection()
     {
-    //rotate([0,90,0]){ full_sensor(); }
+        // Remove this translation here and then adapt B:
+        translate([0.,0.,base_height])
+        {
+                difference()
+                {
+                    difference()
+                    {
+                        color([1.0, 1.0, 1.0])
+                        {
+                           cylinder(r1=base_radius, r2=mid_factor*base_radius,  h=mid_height+1, $fn=200, center=false);
+                        }
+                        color([0.0, 1.0, 1.0])
+                        {
+                            translate([0.,0.,base_thickness]){
+                            // inside void
+                            # cylinder(r1=base_radius-base_thickness, r2=mid_factor*(base_radius-base_thickness), h=mid_height, $fn=200, center=false);
+                            }
+                        }
+                    }
+                    //translate([30.,0.,mid_height]){ rotate([0,90,0]){ cylinder(r=25,h=30, $fn=200, center=true); } }
+                }
+        }
+        // B translation needs to be adapted
+        translate([-0.65*base_radius,0.,mid_height*0.15])
+        {
+            rotate([90,0,0])
+            {
+                color([0.,0.,1.0, 0.2]){ # cylinder(r=90,h=120, $fn=200, center=true); }
+            }
+        }
     }
 }
-}
 
+//body_shell();
+// ======================================
 module arduino_placeholder()
 {
-translate([0,0,40])
-{
-    rotate([0,-90,0])
+    translate([0,0,40])
     {
-        translate([-37.5,-26.5,0])
+        rotate([0,-90,0])
         {
-        // 75x53
-        import("/home/erwan/Documents/RobotMaker/cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_top.stl");
-        import("/home/erwan/Documents/RobotMaker/cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
+            translate([-37.5,-26.5,0])
+            {
+            // 75x53
+            import("/home/erwan/Documents/RobotMaker/cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_top.stl");
+            import("/home/erwan/Documents/RobotMaker/cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
+            }
         }
     }
 }
-}
+
+//arduino_placeholder();
+// ======================================
