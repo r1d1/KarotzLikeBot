@@ -22,8 +22,8 @@ translate([0,0,20])
         translate([-37.5,-26.5,0])
         {
         // 75x53
-      //  import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_top.stl");
-      //  import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
+        import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_top.stl");
+        import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
         }
     }
 }

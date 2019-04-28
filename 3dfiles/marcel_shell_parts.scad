@@ -84,12 +84,15 @@ base_thickness = 5;
 
 // ======================================
 // to clean and reorganize
-module base_shell()
+module base_shell(radius, height, thickness)
 {
-    difference()
-    {
-        color([1.0, 1.0, 1.0]){ cylinder(r=base_radius, h=base_height+1, $fn=200, center=false); }
-        translate([0.,0.,base_thickness]){ cylinder(r=base_radius-base_thickness, h=base_height, $fn=200, center=false); }
+    color([1.0, 1.0, 1.0])
+    { 
+        difference()
+        {
+            cylinder(r=radius, h=height, $fn=200, center=true);
+            translate([0.,0., thickness]){ cylinder(r=radius-thickness, h=height, $fn=200, center=true); }
+        }
     }
 }
 
