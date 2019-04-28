@@ -79,6 +79,11 @@ translate([13, -10, 13])
 
 // ======================================
 // to clean and reorganize
+base_radius = 50;
+base_height = 25;
+mid_height = 75;
+base_thickness = 5;
+
 module body_shell()
 {
     // middle
@@ -100,7 +105,7 @@ module body_shell()
                         {
                             translate([0.,0.,base_thickness]){
                             // inside void
-                            # cylinder(r1=base_radius-base_thickness, r2=mid_factor*(base_radius-base_thickness), h=mid_height, $fn=200, center=false);
+                            cylinder(r1=base_radius-base_thickness, r2=mid_factor*(base_radius-base_thickness), h=mid_height, $fn=200, center=false);
                             }
                         }
                     }
@@ -112,7 +117,7 @@ module body_shell()
         {
             rotate([90,0,0])
             {
-                color([0.,0.,1.0, 0.2]){ # cylinder(r=90,h=120, $fn=200, center=true); }
+                color([0.,0.,1.0, 0.2]){ cylinder(r=90,h=120, $fn=200, center=true); }
             }
         }
     }

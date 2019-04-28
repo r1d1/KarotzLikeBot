@@ -84,7 +84,7 @@ base_thickness = 5;
 
 // ======================================
 // to clean and reorganize
-module base_shell()
+module base_shell(base_radius, base_height, base_thickness)
 {
     difference()
     {
