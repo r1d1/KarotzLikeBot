@@ -11,6 +11,7 @@ import argparse
 import json
 import time
 import os
+import subprocess
 import requests
 from tqdm import tqdm
 import numpy as np
@@ -62,6 +63,7 @@ if __name__ == "__main__":
                         if chunk:
                             fout.write(chunk);
                             count += 1
+                subprocess.Popen(['unzip', output_file, '-d', args.output ])
             else:
                 time.sleep(sleep_time);
                 sleep_time += 2.0;
@@ -69,3 +71,4 @@ if __name__ == "__main__":
                     print("cannot download {}".format(link));
                     break;
         time.sleep(0.1)
+
