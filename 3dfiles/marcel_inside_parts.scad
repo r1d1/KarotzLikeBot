@@ -9,30 +9,58 @@
  * Licence : CC-By-SA
  * */
 
-// include components lib:
-//include <../../cad-library/US_sensor_HC-SR04/hc-sr04-ultrasonic-sensor.scad>
-//include <../../cad-library/TowerPro_MicroServo9g_SG90.scad>
+// Include all placeholder components models:
+include <../../cad-library/US_sensor_HC-SR04/hc-sr04-ultrasonic-sensor.scad>
+include <TowerPro_MicroServo9g_SG90.scad>
 
 path_cadlib = "../../cad-library";
 
-translate([0,0,20])
+module arduino()
 {
-    rotate([0,-0,0])
+    translate([0,0,20])
     {
-        translate([-37.5,-26.5,0])
+        rotate([0,-0,0])
         {
-        // 75x53
-        import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_top.stl");
-        import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
+            translate([-37.5,-26.5,0])
+            {
+            // 75x53
+            import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_top.stl");
+            import("../../cad-library/Arduino_Uno_Snug_Case/files/arduino_uno_bottom.stl");
+            }
         }
     }
 }
 
+//arduino();
 base_radius = 50;
 base_height = 100;
 
 centerability = false;
 
+// approx dimensions
+circle(r=base_radius);
+cylinder(r=1, h=130);
+
+//translate([-11.4, -6.3, 50.]){ rotate([0,0,0]){ servoSG90(); } }
+//translate([0., -11.4, 110]){ rotate([0, 90, 90]){ servoSG90(); } }
+
+
+//difference()
+{
+    translate([0,0, 35])
+    {
+        intersection()
+        {
+            cube([30,20,70], center=true); 
+            rotate([90,0, 0]){ cylinder(r=36, h=20, center=true); }
+        }
+    }
+    //translate([0,0, 35]){ #cube([20,21,60], center=true); }
+    //cylinder(r1=30, r2=20, h=50, $fn=4, center=true);
+}
+
+/*
+Useless now:
 module bottom_base()
 {
   difference()
@@ -42,33 +70,13 @@ module bottom_base()
   }
 }
 
-//import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl");
-translate([20,0,0])
-{
-// import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); 
-}
-//translate([60,0,0]){ servoSG90(); }
-//translate([100,-0,0]){ servoSG90(); }
+bottom_base();
+*/
 
-module leg()
-{
-  rotate([0,-90,0])
-  {
-    linear_extrude(height = 16, center = true)
-    {
-      intersection()
-      {
-        square(20,30);
-        circle(r=23);
-      }
-    }
-  }
-}
 
-//bottom_base();
-//rotate([0,0,0]){ translate([0, base_radius, 0]){ leg(); } }
-//rotate([0,0,90]){ translate([0, base_radius, 0]){ leg(); } }
-//rotate([0,0,180]){  translate([0, base_radius, 0]){ leg(); } }
-//rotate([0,0,-90]){  translate([0, base_radius, 0]){ leg(); } }
+translate([55,0,0])
+{
+ import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); 
+}
 
 

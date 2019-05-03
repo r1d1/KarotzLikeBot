@@ -100,3 +100,74 @@ module base_shell(radius, height, thickness)
 
 //round_top(h_radius, h_thickness);
 //round_bottom(h_radius, h_thickness);
+
+// ======================================
+// to clean and reorganize
+base_radius = 50;
+base_height = 25;
+mid_height = 75;
+base_thickness = 5;
+
+module body_shell(resolution=100)
+{
+    // middle
+    mid_factor = 0.7;
+    intersection()
+    {
+        // Remove this translation here and then adapt B:
+        //translate([0.,0.,base_height])
+        translate([0., 0., 0.])
+        {
+                difference()
+                {
+                    difference()
+                    {
+                        color([1.0, 1.0, 1.0])
+                        {
+                           cylinder(r1=base_radius, r2=mid_factor*base_radius,  h=mid_height+1, $fn=resolution, center=false);
+                        }
+                        color([0.0, 1.0, 1.0])
+                        {
+                            translate([0.,0.,base_thickness]){
+                            // inside void
+                            cylinder(r1=base_radius-base_thickness, r2=mid_factor*(base_radius-base_thickness), h=mid_height, $fn=resolution, center=false);
+                            }
+                            translate([0.,0., -base_thickness]){
+                                cylinder(r=(base_radius-base_thickness)-1, h=base_height+1, $fn=resolution, center=true);
+                            }
+                        }
+                    }
+                    //translate([30.,0.,mid_height]){ rotate([0,90,0]){ cylinder(r=25,h=30, $fn=200, center=true); } }
+                }
+        }
+        // B translation needs to be adapted
+        //translate([-0.65*base_radius,0.,mid_height*0.15])
+        translate([-0.65*base_radius,0., -(25 - 0.15 * 75)])
+        {
+            rotate([90,0,0])
+            {
+                color([0.,0.,1.0, 0.2]){ cylinder(r=90,h=120, $fn=resolution, center=true); }
+            }
+        }
+    }
+}
+
+//body_shell();
+
+// ======================================
+module leg(resolution=24)
+{
+  rotate([0,-90,0])
+  {
+    linear_extrude(height = 16, center = true)
+    {
+      intersection()
+      {
+        square(20,30);
+        circle(r=23, $fn=resolution);
+      }
+    }
+  }
+}
+
+//leg();

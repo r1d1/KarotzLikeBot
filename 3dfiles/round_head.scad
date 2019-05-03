@@ -78,53 +78,6 @@ translate([13, -10, 13])
 
 
 // ======================================
-// to clean and reorganize
-base_radius = 50;
-base_height = 25;
-mid_height = 75;
-base_thickness = 5;
-
-module body_shell()
-{
-    // middle
-    mid_factor = 0.7;
-    intersection()
-    {
-        // Remove this translation here and then adapt B:
-        translate([0.,0.,base_height])
-        {
-                difference()
-                {
-                    difference()
-                    {
-                        color([1.0, 1.0, 1.0])
-                        {
-                           cylinder(r1=base_radius, r2=mid_factor*base_radius,  h=mid_height+1, $fn=200, center=false);
-                        }
-                        color([0.0, 1.0, 1.0])
-                        {
-                            translate([0.,0.,base_thickness]){
-                            // inside void
-                            cylinder(r1=base_radius-base_thickness, r2=mid_factor*(base_radius-base_thickness), h=mid_height, $fn=200, center=false);
-                            }
-                        }
-                    }
-                    //translate([30.,0.,mid_height]){ rotate([0,90,0]){ cylinder(r=25,h=30, $fn=200, center=true); } }
-                }
-        }
-        // B translation needs to be adapted
-        translate([-0.65*base_radius,0.,mid_height*0.15])
-        {
-            rotate([90,0,0])
-            {
-                color([0.,0.,1.0, 0.2]){ cylinder(r=90,h=120, $fn=200, center=true); }
-            }
-        }
-    }
-}
-
-//body_shell();
-// ======================================
 module arduino_placeholder()
 {
     translate([0,0,40])
