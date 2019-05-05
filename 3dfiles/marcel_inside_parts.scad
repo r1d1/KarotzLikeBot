@@ -31,6 +31,15 @@ module arduino()
     }
 }
 
+module middle_support()
+{
+    intersection()
+    {
+        cube([35,20,70], center=true); 
+        translate([0,0, -5]){ rotate([90,0, 0]){ cylinder(r=40, h=20, center=true); } }
+    }
+}
+
 //arduino();
 base_radius = 50;
 base_height = 100;
@@ -41,42 +50,30 @@ centerability = false;
 circle(r=base_radius);
 cylinder(r=1, h=130);
 
-//translate([-11.4, -6.3, 50.]){ rotate([0,0,0]){ servoSG90(); } }
-//translate([0., -11.4, 110]){ rotate([0, 90, 90]){ servoSG90(); } }
+translate([-11.4, -6.3, 50.5]){ rotate([0,0,0]){ servoSG90(); } }
+translate([0., -11.4, 110]){ rotate([0, 90, 90]){ servoSG90(); } }
+translate([28, 10, 98]){ rotate([180,-90,0]){ full_sensor(); } }
 
-
-//difference()
+difference()
 {
     translate([0,0, 35])
     {
-        intersection()
-        {
-            cube([30,20,70], center=true); 
-            rotate([90,0, 0]){ cylinder(r=36, h=20, center=true); }
-        }
+        middle_support();
     }
-    //translate([0,0, 35]){ #cube([20,21,60], center=true); }
+    translate([0,0, 30]){ 
     //cylinder(r1=30, r2=20, h=50, $fn=4, center=true);
-}
+    scale([0.8, 1.1, 0.8]){ middle_support(); }
+    }
 
-/*
-Useless now:
-module bottom_base()
-{
-  difference()
-  {
-    color([1.0,1.0,1.0]){ cylinder(r=base_radius,h=0.1*base_height, center=centerability, $fn=128); }
-    translate([0,0,0.2]){ color([0.0,0.0]){ cylinder(r=0.9*base_radius,h=0.1*base_height, center=centerability, $fn=128); } }
-  }
-}
-
-bottom_base();
-*/
-
-
-translate([55,0,0])
-{
- import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); 
+    //#cube([20,21,60], center=true); }
 }
 
 
+translate([55,-10,0]){ import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); }
+translate([55,0,0]){ import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); }
+translate([60,0,0]){ import("../../cad-library/fischertechnik_SG90_mini_servo_system/files/03_Gear_Z10_adapter_v2.stl"); }
+
+//translate([20,10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+//translate([-20,10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+//translate([-20,-10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+//translate([20,-10,0]){ cylinder(r=2.5, h=100, $fn=6); }
