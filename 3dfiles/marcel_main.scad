@@ -100,10 +100,15 @@ for(colors=color_vec)
         base_angle = 45;
         color(colors[2])
         {
-            rotate([0,0, base_angle+0]){ translate([0, base_radius, 0]){ leg(shell_resolution); } }
-            rotate([0,0, base_angle+90]){ translate([0, base_radius, 0]){ leg(shell_resolution); } }
-            rotate([0,0, base_angle+180]){  translate([0, base_radius, 0]){ leg(shell_resolution); } }
-            rotate([0,0, base_angle+270]){  translate([0, base_radius, 0]){ leg(shell_resolution); } }
+            rotate([0,0, base_angle+0]){ translate([0, base_radius+2, 0]){ leg(shell_resolution); } }
+            rotate([0,0, base_angle+90]){ translate([0, base_radius+2, 0]){ leg(shell_resolution); } }
+            rotate([0,0, base_angle+180]){  translate([0, base_radius+2, 0]){ leg(shell_resolution); } }
+            rotate([0,0, base_angle+270]){  translate([0, base_radius+2, 0]){ leg(shell_resolution); } }
+            
+            rotate([0,0, base_angle+0]){ translate([0, base_radius, 10]){ cube([10,8,15], center=true); } }
+            rotate([0,0, base_angle+90]){ translate([0, base_radius, 10]){ cube([10,8,15], center=true); } }
+            rotate([0,0, base_angle+180]){  translate([0, base_radius, 10]){ cube([10,8,15], center=true); } }
+            rotate([0,0, base_angle+270]){  translate([0, base_radius, 10]){ cube([10,8,15], center=true); } }
         }
         }
 

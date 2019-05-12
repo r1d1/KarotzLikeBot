@@ -50,10 +50,13 @@ centerability = false;
 circle(r=base_radius);
 cylinder(r=1, h=130);
 
+
 translate([-11.4, -6.3, 50.5]){ rotate([0,0,0]){ servoSG90(); } }
 translate([0., -11.4, 110]){ rotate([0, 90, 90]){ servoSG90(); } }
 translate([28, 10, 98]){ rotate([180,-90,0]){ full_sensor(); } }
 
+
+/*
 difference()
 {
     translate([0,0, 35])
@@ -61,19 +64,19 @@ difference()
         middle_support();
     }
     translate([0,0, 30]){ 
-    //cylinder(r1=30, r2=20, h=50, $fn=4, center=true);
+    cylinder(r1=30, r2=20, h=50, $fn=4, center=true);
     scale([0.8, 1.1, 0.8]){ middle_support(); }
     }
 
-    //#cube([20,21,60], center=true); }
-}
+    //#cube([20,21,60], center=true); 
+}*/
 
 
 translate([55,-10,0]){ import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); }
 translate([55,0,0]){ import("../../cad-library/LDR_Dummy_Model/2064_ldr.stl"); }
 translate([60,0,0]){ import("../../cad-library/fischertechnik_SG90_mini_servo_system/files/03_Gear_Z10_adapter_v2.stl"); }
 
-//translate([20,10,0]){ cylinder(r=2.5, h=100, $fn=6); }
-//translate([-20,10,0]){ cylinder(r=2.5, h=100, $fn=6); }
-//translate([-20,-10,0]){ cylinder(r=2.5, h=100, $fn=6); }
-//translate([20,-10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+translate([20,10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+translate([-20,10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+translate([-20,-10,0]){ cylinder(r=2.5, h=100, $fn=6); }
+translate([20,-10,0]){ cylinder(r=2.5, h=100, $fn=6); }
