@@ -114,7 +114,7 @@ module interbar(pole_radius)
 
 module support()
 {
-    cylinder(r=base_radius-shell_thickness, h=2, center=true);
+    //cylinder(r=base_radius-shell_thickness, h=2, center=true);
     translate([pole_position,pole_position,pole_len/2]){ color("red"){ vbar(pole_rad, pole_len); } }
     translate([pole_position,-pole_position,pole_len/2]){ color("red"){ vbar(pole_rad, pole_len); } }
     translate([-pole_position,-pole_position,pole_len/2]){ color("red"){ vbar(pole_rad, pole_len); } }
@@ -144,14 +144,42 @@ module top_shape()
     }
 }
 
+module full_support()
+{
 difference()
 {
-support();
-translate([0,0,pole_len])
-{
-translate([pole_position, pole_position, 0]){ top_shape(); } 
-translate([pole_position, -pole_position, 0]){ top_shape(); }
-translate([-pole_position, -pole_position, 0]){ top_shape(); }
-translate([-pole_position, pole_position, 0]){ top_shape(); }
+    support();
+    translate([0,0,pole_len])
+    {
+        translate([pole_position, pole_position, 0]){ top_shape(); } 
+        translate([pole_position, -pole_position, 0]){ top_shape(); }
+        translate([-pole_position, -pole_position, 0]){ top_shape(); }
+        translate([-pole_position, pole_position, 0]){ top_shape(); }
+    }
 }
+}
+
+//cylinder(r=base_radius-shell_thickness, h=2, center=true);
+intersection()
+{
+    difference()
+    {
+        cube([55,55,10], center=true);
+        translate([0,0,-pole_len-1])
+        {
+            difference()
+            {
+                full_support();
+                translate([0,0,-(pole_len-6.40)]){ color("green"){ scale(1,1,1.005){ full_support(); } } }
+            }
+        }
+        translate([-11,-6.5,-13]){ rotate([0,0,0]){ servoSG90(); } }
+    }
+    union()
+    {
+        translate([11,11,0]){ color("red"){ cylinder(r=19,h=12, center=true); } }
+        translate([11,-11,0]){ color("red"){ cylinder(r=19,h=12, center=true); } }
+        translate([-11,-11,0]){ color("red"){ cylinder(r=19,h=12, center=true); } }
+        translate([-11,11,0]){ color("red"){ cylinder(r=19,h=12, center=true); } }
+    }
 }
