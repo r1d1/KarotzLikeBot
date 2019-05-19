@@ -11,4 +11,4 @@ Marcel est donc la concrétisation de cette promesse d'enfant et d'un ensemble d
 - un système autonome, prévu pour fonctionner pendant de longues périodes de temps et "vivre" sa vie de robot.
 - un robot avec lequel l'interaction est naturelle: pas de clavier/bouton ou d'écran, on doit pouvoir envoyer de l'information sans outil (donc voix, geste/présence, ...) et en recevoir de même (en interprétant l'attitude du robot).
 
-Ma promesse est en quelque sort le contexte pour ces idées là. On verra jusqu'où j'arrive !
+Ma promesse est en quelque sorte le contexte pour ces idées là. On verra jusqu'où j'arrive !
