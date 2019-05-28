@@ -1,5 +1,7 @@
 This project is the design of a small companion robot inspired by the Karotz/Nabaztag products.
 
+Fancier website (wip): https://r1d1.github.io/KarotzLikeBot
+
 Some ideas to use:
 - use cron to generate random autonomous behaviors.
 - ears/LED combination to animate.
