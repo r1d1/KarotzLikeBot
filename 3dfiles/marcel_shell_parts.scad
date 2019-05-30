@@ -23,7 +23,7 @@ module round_top(radius=50, hat_thickness=0.2)
             difference()
             {
                 sphere(r=radius, $fn=100, center=true);
-                sphere(r=(1.0-hat_thickness)*radius, $fn=100, center=true);
+                //sphere(r=(1.0-hat_thickness)*radius, $fn=100, center=true);
             }
         }
         // cylinder was translated -0.15*radius on z
@@ -52,7 +52,11 @@ module head_top_shell(head_radius, head_thickness)
     {
         scale([1.0,0.8,1.0])
         {
-            round_top(head_radius, head_thickness);
+            difference()
+            {
+                round_top(head_radius, head_thickness);
+                translate([0,0,-0.5*head_radius]){ #sphere(r=(1.0-head_thickness)*head_radius, $fn=100, center=true); }
+            }
             round_bottom(head_radius, head_thickness);
         }
         
@@ -61,17 +65,28 @@ module head_top_shell(head_radius, head_thickness)
         side_offset = -10;
         vert_offset = -13;
         // US sensor holes
+       union()
+        {
         rotate([0,30,0])
         {
             translate([16/2+1+vert_offset,18/2+1+side_offset,1.3+front_offset])
-            { cylinder(r=8.5, h=25); }
+            { cylinder(r=8.5, h=50, center=true); }
             translate([16/2+27+1+vert_offset,18/2+1+side_offset,1.3+front_offset])
-            { cylinder(r=8.5, h=25); }
+            { cylinder(r=8.5, h=50, center=true); }
+            intersection()
+            {
+                translate([16/2+13.5+1+vert_offset,0,0])
+                //{ cube([60,40,70], center=true); }
+                scale([1.0,0.8,1.0])
+                {
+                }
+            }
+        }
         }
     }
 }
 
-//head_top_shell();
+head_top_shell(60, 0.1);
 // ======================================
 // ======================================
 
