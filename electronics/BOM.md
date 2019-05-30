@@ -9,6 +9,6 @@ This file lists the necessary electronics parts along with some analysis of the 
 | Ultrasound HC-SR04 | 1 | 5V | n/a | No need for PWM | 3/pc. |
 | LDR | 2 | n/a | n/a | 1 analog pin/pc | <1/pc. |
 | Buzzer | 1 | 0-5V | n/a | 1 PWM pin | <1 |
-| Microphone | 1 | 5V | n/a | 1 analog pin/pc | <1 |
+| Microphone | 1 | 5V | n/a | 1 analog pin/pc ; KY-038 needs 1aanlog and 1 digital (detection) | <1 |
 | LED RGB | 3 | 5V | <0.02A | 3 PWM/pc (for progressive lighting) | 3/pc |
 | LED strip | 3 | 5V | <0.02A | No need for PWM? SMD5050: 0.2W/LED | 3/pc |
