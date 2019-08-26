@@ -135,6 +135,8 @@ module support()
     }
 }
 
+//full_support();
+
 module top_shape()
 {
     difference()
