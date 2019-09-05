@@ -12,4 +12,4 @@ Codename M.A.R.C.E.L
 
 **M**inimalist **A**utonomous **R**obot **C**onstantly **E**xperiencing **L**ife
  
-
+Consumption Arduino (FR): https://www.carnetdumaker.net/articles/test-comparatif-de-la-consommation-electrique-vide-de-diverses-cartes-arduino-et-compatible

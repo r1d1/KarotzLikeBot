@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="marcel">
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder length="1.5" radius="1.0"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.75" rpy="0.0 0.0 0.0"/>
+        </visual>
+    </link>
+
+    <link name="neck1">
+        <visual>
+            <geometry>
+                <cylinder length="0.15" radius="1.0"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+    </link>
+
+    <joint name="base_to_neck" type="fixed">
+        <parent link="base_link"/>
+        <child link="neck1"/>
+        <origin xyz="0.0 0.0 1.60" rpy="0.0 -0.24 0.0" />
+    </joint>
+
+    <link name="neck2">
+        <visual>
+            <geometry>
+                 <box size="0.2 0.2 0.2"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+    </link>
+
+    <joint name="neck1_to_neck2" type="fixed">
+        <parent link="neck1"/>
+        <child link="neck2"/>
+        <origin xyz="0.2 0.0 0.0" rpy="0.0 0.24 0.0" />
+    </joint>
+
+    <link name="face">
+        <visual>
+            <geometry>
+                 <box size="0.2 0.2 0.2"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </visual>
+    </link>
+
+    <joint name="neck_to_face" type="fixed">
+        <parent link="neck2"/>
+        <child link="face"/>
+        <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0" />
+    </joint>
+
+</robot>

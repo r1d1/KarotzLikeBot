@@ -86,7 +86,7 @@ module head_top_shell(head_radius, head_thickness)
     }
 }
 
-head_top_shell(60, 0.1);
+//head_top_shell(60, 0.1);
 // ======================================
 // ======================================
 
@@ -186,3 +186,23 @@ module leg(resolution=24)
 }
 
 //leg();
+
+// ======================================
+module head_variant(resolution=24)
+{
+    difference()
+    {
+    intersection()
+    {
+        cube([80,80,6], center=true);
+        translate([35,35,0])
+        {
+            cylinder(r=80, h=10, center=true, $fn=resolution);
+        }
+    }
+    translate([70,70,0]){ cylinder(r=80, h=10, center=true, $fn=resolution); }
+    translate([-41,41,0]){ rotate([0,0,45]){ cube([15,10,10], center=true); } }
+    }
+}
+
+head_variant(resolution=256);
