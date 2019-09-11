@@ -188,7 +188,7 @@ module leg(resolution=24)
 //leg();
 
 // ======================================
-module head_variant(resolution=24)
+module hv_side(resolution=24)
 {
     difference()
     {
@@ -202,6 +202,19 @@ module head_variant(resolution=24)
     }
     translate([70,70,0]){ cylinder(r=80, h=10, center=true, $fn=resolution); }
     translate([-41,41,0]){ rotate([0,0,45]){ cube([15,10,10], center=true); } }
+    }
+}
+module head_variant(resolution=24)
+{
+    color([1,0,0])
+    {
+        translate([0,0,20]){ hv_side(resolution); }
+        translate([0,0,-20]){ hv_side(resolution); }
+    }
+    difference()
+    {
+        hv_side(resolution);
+        translate([7,7,0]){ scale([1.0, 1.0, 1.1]) hv_side(resolution); }
     }
 }
 
