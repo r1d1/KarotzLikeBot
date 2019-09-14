@@ -1,0 +1,2 @@
+Vous pensiez que j'avais abandonné ce projet aussi ? Que nenni ! Même si la partie mécanique n'a pas avancé concrètement parce que je n'ai pas encore réinstallé ma CR10S et que je cherchais des solutions pour monter l'intérieur, j'ai quand même progressé sur la partie logicielle.
+Au programme, création d'un fichier urdf pour Marcel (urdf: Unified Robot Description Format). L'urdf décrit les relations entre parties et articulations (joint) du robot.
