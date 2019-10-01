@@ -1,2 +1,17 @@
 Vous pensiez que j'avais abandonné ce projet aussi ? Que nenni ! Même si la partie mécanique n'a pas avancé concrètement parce que je n'ai pas encore réinstallé ma CR10S et que je cherchais des solutions pour monter l'intérieur, j'ai quand même progressé sur la partie logicielle.
-Au programme, création d'un fichier urdf pour Marcel (urdf: Unified Robot Description Format). L'urdf décrit les relations entre parties et articulations (joint) du robot.
+Au programme, création d'un fichier urdf pour Marcel (urdf: Unified Robot Description Format). L'urdf décrit les relations entre les pièces (links) et les articulations (joints) du robot. Une fois ce fichier défini, on peut l'utiliser dans ROS notamment pour les calculs de cinématique (directe et inverse), et d'afficher les capteurs dans n'importe quel référentiel du robot (frame).
+
+Pour Marcel, rien de bien original:
+<frames_marcel.png>
+
+Structure de tourelle avec 2 articulations (pivots orthogonaux), une mécanique plutôt simple. Comme je suis encore loin de la modélisation finale des pièces, j'ai utilisé des formes simples et des distances approximatives que j'adapterai quand j'aurai les valeurs finales.
+
+Même sans contrôleur spécifique au robot, on peut le visualiser dans RViz et faire bouger les articulations pour avoir une idée des mouvements.
+<Video RViz> 
+
+Ici, on n'a qu'un modèle visuel du robot : les collisions ne sont pas prises en compte et on peut se retrouver avec des inter-pénétrations:
+
+TODO
+L'étape suivante est donc de définir les propriétés physiques du robot: volumes de collision, inertie des pièces, dynamique des articulations, ... définir les volumes est plutôt simple, pour ce qui est de l'inertie et de la dynamique, on est dans une étape de modélisation du robot plus avancée. Comme mon modèle n'est pas final, je passe cette étape et j'utilise des valeurs standards ; à noter que ces valeurs sont nécessaires pour pouvoir simuler le robot dans Gazebo
+
+Source: http://wiki.ros.org/urdf/Tutorials

@@ -24,7 +24,7 @@ Actionneurs
 - 1 LED RGB (3)
 
 Comme le robot sera immobile, pas besoin d'actionnement mécanique complexe: on part sur un système de tourelle pan-tilt qui va orienter la tête par rapport au corps.
-Avec le design actuel, j'ai deux degrés de liberté pour orienter la tête. Idéalement, je pourrais en rajouter un 3ème pour enrichir la palette de mouvements et d'émotions, en pratique, je peux un prototype fonctionnel assez rapidement, donc je préfère limiter la complexité mécanique (qui n'est pas du tout ma force).
+Avec le design actuel, j'ai deux degrés de liberté pour orienter la tête. Idéalement, je pourrais en rajouter un 3ème pour enrichir la palette de mouvements et d'émotions, en pratique, je veux un prototype fonctionnel assez rapidement, donc je préfère limiter la complexité mécanique (qui n'est pas du tout ma force).
 
 On n'y pense pas toujours, mais des LED et des buzzers/haut-parleurs sont des sorties faciles à mettre en oeuvre mais avec un certain potentiel pour exprimer des émotions. Ici le but n'est pas tant d'intéragir physiquement avec l'environnement que de "communiquer" avec des humains.
 
