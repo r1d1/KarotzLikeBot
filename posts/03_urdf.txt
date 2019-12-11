@@ -1,4 +1,8 @@
-Vous pensiez que j'avais abandonné ce projet aussi ? Que nenni ! Même si la partie mécanique n'a pas avancé concrètement parce que je n'ai pas encore réinstallé ma CR10S et que je cherchais des solutions pour monter l'intérieur, j'ai quand même progressé sur la partie logicielle.
+Vous pensiez que j'avais abandonné ce projet aussi ? Que nenni ! La partie mécanique avance doucement, j'ai reçu de nouveaux servis mais il faut que je leur trouve une alim, vu qu'ils consomment plus que des sg90. Je n'ai pas encore réinstallé ma CR10S mais j'ai trouvé quelques solutions pour monter l'intérieur. En attendant, j'ai quand même progressé sur la partie logicielle.
+Petit teaser ;)
+<pic Marcel_teaser_rvu.png>
+
+---------------------------------------------
 Au programme, création d'un fichier urdf pour Marcel (urdf: Unified Robot Description Format). L'urdf décrit les relations entre les pièces (links) et les articulations (joints) du robot. Une fois ce fichier défini, on peut l'utiliser dans ROS notamment pour les calculs de cinématique (directe et inverse), et d'afficher les capteurs dans n'importe quel référentiel du robot (frame).
 
 Pour Marcel, rien de bien original:
