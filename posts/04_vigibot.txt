@@ -1,0 +1,3 @@
+04_vigibot.txt
+
+Vu que MARCEL est statique, autant lui donner une belle vue. Dans la version 2, MARCEL a une camera, offrons-lui une vue sur les montagnes, c'est joli et ça fait du bien au moral (par beau temps).
