@@ -55,7 +55,7 @@ module head_top_shell(head_radius, head_thickness)
             difference()
             {
                 round_top(head_radius, head_thickness);
-                translate([0,0,-0.5*head_radius]){ #sphere(r=(1.0-head_thickness)*head_radius, $fn=100, center=true); }
+                translate([0,0,-0.5*head_radius]){ sphere(r=(1.0-head_thickness)*head_radius, $fn=100, center=true); }
             }
             round_bottom(head_radius, head_thickness);
         }
@@ -218,4 +218,4 @@ module head_variant(resolution=24)
     }
 }
 
-head_variant(resolution=256);
+//head_variant(resolution=256);
