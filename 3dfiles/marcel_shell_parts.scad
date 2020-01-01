@@ -172,17 +172,18 @@ module body_shell(resolution=100)
 // ======================================
 module leg(resolution=24)
 {
-  rotate([0,-90,0])
-  {
-    linear_extrude(height = 16, center = true)
+    translate([0, -9, -9])
+    rotate([0,-90,0])
     {
-      intersection()
-      {
-        square(20,30);
-        circle(r=23, $fn=resolution);
-      }
+        linear_extrude(height = 16, center = true)
+        {
+            intersection()
+            {
+                square(20,30);
+                circle(r=23, center=true, $fn=resolution);
+            }
+        }
     }
-  }
 }
 
 //leg();
