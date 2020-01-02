@@ -39,6 +39,7 @@ shell_points=[[22,0],[22+3,0],
             // 4th [15+3,60], 7th ,[15,60]
 
 //for( p = shell_points ){ translate([p[0], p[1], 0]) { color([1,0,0]){ sphere(r=0.6, $fn=30);} } }
+
 module shell()
 {
     rotate_extrude(convexity = 10, $fn = 100)
@@ -118,10 +119,11 @@ color_vec =[
             //4, white , cyan ],
             //[5, white , ocean]
             ];
+color_vec=[red, blue, white, cyan, ocean, darkgrey, white, blue];
 
 shell_resolution = 200;
 
-for(colors=color_vec)
+//for(colors=color_vec)
 //for(color1=[red, blue, white, cyan, ocean], color2=[darkgrey, white, blue])
 {
     translate([0., 150*colors[0], 0])
@@ -142,17 +144,22 @@ for(colors=color_vec)
         base_height = 25;
         translate([0., 0., base_height])
         {
-            color(colors[1])
+            color(color_vec[5])
             {
                //body_shell(shell_resolution);
+                rotate([0,0,-90])
+                {
+                    //body_shell(base_radius=60, base_thickness=5, resolution=100);
+                }
             }
         }
 
         // Head
-        color(colors[2])
-        translate([10.,0.,130])
+        color(color_vec[4])
+        rotate([0,0,-90])
+        translate([25.,0.,150])
         {
-            rotate([0,60,90])
+            rotate([0,60,0])
             {
                 head_top_shell(head_long_radius, head_thickness);
             }
@@ -163,7 +170,7 @@ for(colors=color_vec)
 
         base_angle = 45;
         translate([0,0,0])
-        color(colors[2])
+        color(color_vec[4])
         {
             rotate([0,0, base_angle+0]){ translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
             rotate([0,0, base_angle+90]){ translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
@@ -185,35 +192,72 @@ for(colors=color_vec)
 }
 
 
+base_connector_length=80;
+base_connector_width=20;
+base_connector_height=30;
+translate([0,0, (base_connector_height+base_thickness)*0.5])
+{
+    color(color_vec[4])
+    {
+        difference()
+        {
+        cylinder(d=base_connector_length,h=base_connector_height*1.19, center=true);
+        //cube([20,50,base_connector_height], center=true);
+        translate([0,base_connector_length*0.18, base_connector_height*0.65])
+        {
+            cube([base_connector_length+1, (base_connector_length+1)*0.75, base_connector_height*0.5], center=true);
+        }
+        translate([0,base_connector_length*0*0.18, base_connector_height*-0.25])
+        {
+            cube([base_connector_length+1, (base_connector_length+1)*0.75, base_connector_height*0.65], center=true);
+        }
+        }
+    }
+}
+
+
 // horizontal servo
 length_big=55;
 length_side_big=37;
 length_small=44;
 length_side_small=27;
 
-translate([0, (length_side_big - 10)*1, length_big * 0.5 + 10])
+// -------------------------
+translate([0, 0, base_connector_height+length_big*0.5])
 {
-    rotate([90,0,0])
+    // Bottom joint
+    translate([0, (length_side_big - 10)*1, 0])
     {
-        plate_servo(length_big,length_side_big);
-        translate([0, 0, 20+length_side_big + 7]){ rotate([0,180 ,0]){ plate_servo(length_small,length_side_small, small=true); } }
+        rotate([90,0,0])
+        {
+            plate_servo(length_big,length_side_big);
+            translate([0, 0, 20+length_side_big + 7]){ rotate([0,180 ,0]){ plate_servo(length_small,length_side_small, small=true); } }
+        }
     }
-}
-translate([0, 0, length_big * 0.5 + 10])
-{
+
     translate([0, -12.5, 0]){ color([0,1,0]){ cube([20, 40, length_side_big], center=true); } }
     color([0,0,1]){ cylinder(d=8, h=length_big, center=true, $fn=60); }
 }
 
-  
-/*
-rotate([90,0,0])
+// -------------------------
+translate([0, 0, 130])
 {
-    plate_servo(length_big,length_side_big);
-    translate([0, 0, 20+length_side_big + 7]){ rotate([0,180,0]){ plate_servo(length_small,length_side_small); } }
-}
-*/
-//translate([0, 0, (20+length_side_big + 7)]){ plate_servo(length_small,length_side_small); }
-//translate([0, 0, 0]){ rotate([0,0,0]){ plate_servo(length_big,length_side_big); } }
+    // Top joint
+    translate([0, (length_side_big - 10)*1, 0])
+    {
+    rotate([90,90,0])
+    {
+        translate([23.5,0,13.5]){ rotate([0,-60,0]){ plate_servo(length_big,length_side_big); } }
+        translate([0, 0, 20+length_side_big + 7]){ rotate([0,180,0]){ plate_servo(length_small,length_side_small); } }
+    }
+    }
 
-//rotate([90,0,0]){}
+    rotate([0,90,0])
+    {
+        translate([0, -12.5, 0]){ color([0,1,0])
+        {
+           cube([20, 40, length_side_big], center=true); }
+        }
+        color([0,0,1]){ cylinder(d=8, h=length_big, center=true, $fn=60); }
+    }
+}
