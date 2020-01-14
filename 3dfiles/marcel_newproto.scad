@@ -209,7 +209,7 @@ translate([0,0, (base_connector_height+base_thickness)*0.5])
         }
         translate([0,base_connector_length*0*0.18, base_connector_height*-0.25])
         {
-            cube([base_connector_length+1, (base_connector_length+1)*0.75, base_connector_height*0.65], center=true);
+              cube([base_connector_length+1, (base_connector_length+1)*0.75, base_connector_height*0.65], center=true);
         }
         }
     }
