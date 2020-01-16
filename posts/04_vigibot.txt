@@ -1,3 +1,5 @@
 04_vigibot.txt
 
 Vu que MARCEL est statique, autant lui donner une belle vue. Dans la version 2, MARCEL a une camera, offrons-lui une vue sur les montagnes, c'est joli et ça fait du bien au moral (par beau temps).
+
+... Mais en vrai, on pourrait juste tweeter une à deux images par jour vers le lever du soleil et/ou vers midi/minuit

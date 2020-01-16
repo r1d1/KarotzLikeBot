@@ -3,12 +3,12 @@ Petit teaser ;)
 <pic Marcel_teaser_rvu.png>
 
 ---------------------------------------------
-Au programme, création d'un fichier urdf pour Marcel (urdf: Unified Robot Description Format). L'urdf décrit les relations entre les pièces (links) et les articulations (joints) du robot. Une fois ce fichier défini, on peut l'utiliser dans ROS notamment pour les calculs de cinématique (directe et inverse), et d'afficher les capteurs dans n'importe quel référentiel du robot (frame).
+Au programme, création d'un fichier urdf pour Marcel (urdf: Unified Robot Description Format). L'urdf décrit les relations entre les pièces (links) et les articulations (joints) du robot. Une fois ce fichier défini, on peut l'utiliser dans ROS notamment pour les calculs de cinématique (directe et inverse), et pour afficher les données des capteurs dans n'importe quel référentiel du robot (frame).
 
 Pour Marcel, rien de bien original:
 <frames_marcel.png>
 
-Structure de tourelle avec 2 articulations (pivots orthogonaux), une mécanique plutôt simple. Comme je suis encore loin de la modélisation finale des pièces, j'ai utilisé des formes simples et des distances approximatives que j'adapterai quand j'aurai les valeurs finales.
+Structure de tourelle avec 2 articulations (pivots orthogonaux), une mécanique plutôt simple. Dans l'image teaser, j'avais utilisé des formes simples et des distances approximatives pour donner une idée du mouvement et de la forme. Comme on est quelques mois plus tard ("temps, où t'envoles-tu donc ?"). Comme je suis encore loin de la modélisation finale des pièces, j'ai utilisé des formes simples et des distances approximatives que j'adapterai quand j'aurai les valeurs finales.
 
 Même sans contrôleur spécifique au robot, on peut le visualiser dans RViz et faire bouger les articulations pour avoir une idée des mouvements.
 <Video RViz> 
