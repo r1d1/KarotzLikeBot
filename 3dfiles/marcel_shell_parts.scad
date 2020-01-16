@@ -10,7 +10,7 @@
  * */
 
 //include <round_head.scad>
-
+use <tmp_ultrasonic_sensor.scad>;
 // ======================================
 // Top shell Head from sphere and cut
 module round_top(radius=50, hat_thickness=0.2)
@@ -45,6 +45,8 @@ module round_bottom(radius=50, hat_thickness=0.2)
 }
 
 // ======================================
+
+        
 // Full head
 module head_top_shell(head_radius, head_thickness)
 {
@@ -59,13 +61,13 @@ module head_top_shell(head_radius, head_thickness)
             }
             round_bottom(head_radius, head_thickness);
         }
-        
         // US positioning
         front_offset = 14;
         side_offset = -10;
         vert_offset = -13;
+
         // US sensor holes
-       union()
+        union()
         {
         rotate([0,30,0])
         {
@@ -84,9 +86,27 @@ module head_top_shell(head_radius, head_thickness)
         }
         }
     }
+    translate([17.5,0,11.5])
+    {
+    rotate([0,30,0])
+    {
+        us_sensor();
+    }
+    }
 }
 
 //head_top_shell(60, 0.1);
+//translate([4.5,-15,0])
+rotate([0,0*-60,0])
+{
+    difference()
+    {
+        translate([0,0,0]){ cube([40, 5, 20], center=true); }
+        rotate([0,75,0]){ translate([0,0,15]){ #cube([30, 6, 20], center=true); } }
+     }
+}
+//rotate([0,-60,0]){ translate([4.5,15,0]){ cube([40, 5, 20], center=true); } }
+
 // ======================================
 // ======================================
 
@@ -111,7 +131,7 @@ module base_shell(radius, height, thickness)
     }
 }
 
-//base_shell();
+//base_shell(radius=80, height=50, thickness=2.5);
 
 //round_top(h_radius, h_thickness);
 //round_bottom(h_radius, h_thickness);
