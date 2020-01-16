@@ -8,12 +8,10 @@
 
 M.A.R.C.E.L stands for Minimalist Autonomous Robot Constantly Experiencing Life 
 
-<img alt="logov1" src="images/just_the_head_logo_v1.png" />
-<img alt="logov2" src="images/just_the_head_logo_v2.png" />
-
-# <img alt="logov3" src="images/just_the_head_logo_v3.png" />
-
-<img alt="logov4" src="images/just_the_head_logo_v4.png" />
+<!-- img alt="logov1" src="images/just_the_head_logo_v1.png" />
+<img alt="logov2" src="images/just_the_head_logo_v2.png" / -->
+<img alt="logov3" src="images/just_the_head_logo_v3.png" />
+<!-- img alt="logov4" src="images/just_the_head_logo_v4.png" /-->
 
 | Time | Activity |
 | --- | --- |
