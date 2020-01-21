@@ -97,6 +97,8 @@ module head_top_shell(head_radius, head_thickness)
 
 //head_top_shell(60, 0.1);
 //translate([4.5,-15,0])
+/*
+// What was this thing again ? Head holder ?
 rotate([0,0*-60,0])
 {
     difference()
@@ -105,6 +107,7 @@ rotate([0,0*-60,0])
         rotate([0,75,0]){ translate([0,0,15]){ #cube([30, 6, 20], center=true); } }
      }
 }
+*/
 //rotate([0,-60,0]){ translate([4.5,15,0]){ cube([40, 5, 20], center=true); } }
 
 // ======================================
@@ -216,6 +219,7 @@ module hv_side(resolution=24)
     translate([-41,41,0]){ rotate([0,0,45]){ cube([15,10,10], center=true); } }
     }
 }
+
 module head_variant(resolution=24)
 {
     color([1,0,0])

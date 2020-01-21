@@ -7,7 +7,7 @@
 offset_center_b = 0;
 offset_center_t = 0;
 
-module plate_servo(length, length_side, , small=false)
+module plate_servo(length, length_side, small=false)
 {
     small_hole = 3.1;
     big_hole=8;
