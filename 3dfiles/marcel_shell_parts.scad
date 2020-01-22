@@ -48,8 +48,10 @@ module round_bottom(radius=50, hat_thickness=0.2)
 
         
 // Full head
-module head_top_shell(head_radius, head_thickness)
+module head_top_shell(head_radius, head_thickness, head_color=[1.0,1.0,1.0,1.0])
 {
+    color(head_color)
+    {
     difference()
     {
         scale([1.0,0.8,1.0])
@@ -85,6 +87,7 @@ module head_top_shell(head_radius, head_thickness)
             }
         }
         }
+    }
     }
     translate([17.5,0,11.5])
     {

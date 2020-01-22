@@ -155,13 +155,13 @@ shell_resolution = 200;
         }
 
         // Head
-        color(color_vec[4])
+        //color(color_vec[4])
         rotate([0,0,-90])
         translate([25.,0.,150])
         {
             rotate([0,60,0])
             {
-                head_top_shell(head_long_radius, head_thickness);
+                head_top_shell(head_long_radius, head_thickness, head_color=color_vec[4]);
             }
         }
 
@@ -169,7 +169,7 @@ shell_resolution = 200;
         //neck_shell();
 
         base_angle = 45;
-        /*
+        
         translate([0,0,0])
         {
         color(color_vec[4])
@@ -187,7 +187,7 @@ shell_resolution = 200;
             rotate([0,0, base_angle+270]){  translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
         }
         }
-        */
+        
         }
 
         //translate([47,0,40]){ rotate([0, 80, 0]){ symbol(); } }
@@ -286,15 +286,14 @@ module horizontal_servo()
 }
 
 
-//translate([0,0,base_thickness*0.5]){ base(); }
-//translate([0,0,base_thickness*1.5]){ color([1.0, 0.75, 0.0]){ cylinder(r=0.8*base_radius, h=base_thickness, $fn=120, center=true); } }
+translate([0,0,base_thickness*0.5]){ base(); }
+translate([0,0,base_thickness*1.5]){ color([1.0, 0.75, 0.0]){ cylinder(r=0.8*base_radius, h=base_thickness, $fn=120, center=true); } }
 
 
 translate([0, 0, base_thickness*1.5]){ support_bottom(); }
-/*
 vertical_servo();
 horizontal_servo();
-*/
+
 
 module m3(length=10)
 {
