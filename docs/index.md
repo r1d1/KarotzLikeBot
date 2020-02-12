@@ -4,7 +4,7 @@
 
 # M.A.R.C.E.L
 
-<img alt="current stage" src="../render/20200212_marcel_render_newproto_wip.png" style="margin-left: auto; margin-right: auto; display: block; width: 400px;" />
+<img alt="current stage" src="https://raw.githubusercontent.com/r1d1/KarotzLikeBot/master/render/20200212_marcel_render_newproto_wip.png" style="margin-left: auto; margin-right: auto; display: block; width: 400px;" />
 
 ## Description
 
