@@ -136,7 +136,7 @@ shell_resolution = 200;
             //color(colors[1])
             color(color_vec[1])
             {
-                //base_shell(base_radius, base_height, base_thickness);
+                base_shell(base_radius, base_height, base_thickness);
             }
         }
 
@@ -149,7 +149,7 @@ shell_resolution = 200;
                //body_shell(shell_resolution);
                 rotate([0,0,-90])
                 {
-                    //body_shell(base_radius=60, base_thickness=5, resolution=100);
+                    body_shell(base_radius=60, base_thickness=5, resolution=100);
                 }
             }
         }
