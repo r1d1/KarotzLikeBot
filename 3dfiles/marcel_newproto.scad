@@ -136,7 +136,7 @@ shell_resolution = 200;
             //color(colors[1])
             color(color_vec[1])
             {
-                base_shell(base_radius, base_height, base_thickness);
+                //base_shell(base_radius, base_height, base_thickness);
             }
         }
 
@@ -149,7 +149,7 @@ shell_resolution = 200;
                //body_shell(shell_resolution);
                 rotate([0,0,-90])
                 {
-                    body_shell(base_radius=60, base_thickness=5, resolution=100);
+                    //body_shell(base_radius=60, base_thickness=5, resolution=100);
                 }
             }
         }
@@ -309,3 +309,14 @@ translate([0,-10, 1.20]){ m3(10); }
 m3(16);
 translate([0,10,0]){ m3(40); }
 */
+
+//test in-between servos connector supported by shell/inside structure
+translate([0,0,90])
+{
+    difference()
+    {
+        sphere(r=40, $fn=120, center=true);
+        translate([0,0,-20]){ cube([80,80,40],center=true); }
+        translate([0,-20,30]){ rotate([30,0,0]){ cube([80,80,30],center=true); } }
+    }    
+}
