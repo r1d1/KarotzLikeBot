@@ -117,6 +117,7 @@ color_vec =[
             //4, white , cyan ],
             //[5, white , ocean]
             ];
+
 color_vec=[red, blue, white, cyan, ocean, darkgrey, white, blue];
 
 shell_resolution = 200;
@@ -217,8 +218,8 @@ module support_bottom()
                     {
                         rotate([90,0,0])
                         {
-                            translate([0, 0, 17.5]){ cube([20,55,37], center=true); }
-                            translate([0, 0, 20+length_side_big + 7 - 12.5]){ rotate([0,180 ,0]){ cube([20,44,27], center=true); } }
+                            translate([0, 0, 17.5]){ #cube([20,55,37], center=true); }
+                            translate([0, 0, 20+length_side_big + 7 - 12.5]){ rotate([0,180 ,0]){ #cube([20,44,27], center=true); } }
                         }
                     }
                 }
@@ -289,12 +290,11 @@ module horizontal_servo()
 //translate([0,0,base_thickness*0.5]){ base(); }
 //translate([0,0,base_thickness*1.5]){ color([1.0, 0.75, 0.0]){ cylinder(r=0.8*base_radius, h=base_thickness, $fn=120, center=true); } }
 
+translate([0, 0, 0*base_thickness*1.5]){ support_bottom(); }
 
-translate([0, 0, base_thickness*1.5]){ support_bottom(); }
-/*
-vertical_servo();
-horizontal_servo();
-*/
+//vertical_servo();
+//horizontal_servo();
+
 
 module m3(length=10)
 {
