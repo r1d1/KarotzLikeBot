@@ -155,40 +155,9 @@ shell_resolution = 200;
             }
         }
 
-        // Head
-        color(color_vec[4])
-        rotate([0,0,-90])
-        translate([25.,0.,150])
-        {
-            rotate([0,60,0])
-            {
-                head_top_shell(head_long_radius, head_thickness);
-            }
-        }
-
         // Neck
         //neck_shell();
 
-        base_angle = 45;
-        /*
-        translate([0,0,0])
-        {
-        color(color_vec[4])
-        {
-            rotate([0,0, base_angle+0]){ translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
-            rotate([0,0, base_angle+90]){ translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
-            rotate([0,0, base_angle+180]){  translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
-            rotate([0,0, base_angle+270]){  translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
-        }
-        color(colors[5])
-        {
-            rotate([0,0, base_angle+0]){ translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
-            rotate([0,0, base_angle+90]){ translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
-            rotate([0,0, base_angle+180]){  translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
-            rotate([0,0, base_angle+270]){  translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
-        }
-        }
-        */
         }
 
         //translate([47,0,40]){ rotate([0, 80, 0]){ symbol(); } }
@@ -199,7 +168,7 @@ shell_resolution = 200;
 // New cooler support
 module support_bottom()
 {
-    color([0.0, 0.5, 0.75])
+    color([0.0, 0.75, 0.5])
     { 
         difference()
         {
@@ -213,14 +182,23 @@ module support_bottom()
             {
                 union()
                 {
+                    // perpendicular hole small servo
                     translate([0, -30, 0]){ color([1,1,1]){ cube([28,17,44], center=true); } }
                     translate([0, (length_side_big - 10)*1, 0])
                     {
                         rotate([90,0,0])
                         {
-                            translate([0, 0, 17.5]){ #cube([20,55,37], center=true); }
+                            // imprint servos
+                            // big side servo
+                            //translate([0, 0, 17.5]){ #cube([20,55,37], center=true); }
+                            // small side servo
                             translate([0, 0, 20+length_side_big + 7 - 12.5]){ rotate([0,180 ,0]){ #cube([20,44,27], center=true); } }
                         }
+                    }
+                    translate([0,7.75,-37])
+                    {
+                        rotate([-25,0,0]){ cube([28,43,16], center=true); }
+                        translate([0,-17.75, 9.5]){ cube([28,10,15], center=true); }
                     }
                 }
             }
@@ -263,7 +241,7 @@ module vertical_servo()
 // Horizontal servo
 module horizontal_servo()
 {
-    translate([0, 0, 130])
+    translate([0, 0, 150])
     {
         // Top joint
         translate([0, (length_side_big - 10)*1, 0])
@@ -279,23 +257,14 @@ module horizontal_servo()
         {
             translate([0, -12.5, 0]){ color([0,1,0])
             {
-            cube([20, 40, length_side_big], center=true); }
+                cube([20, 40, length_side_big], center=true); }
             }
             color([0,0,1]){ cylinder(d=8, h=length_big, center=true, $fn=60); }
         }
     }
 }
 
-
-//translate([0,0,base_thickness*0.5]){ base(); }
-//translate([0,0,base_thickness*1.5]){ color([1.0, 0.75, 0.0]){ cylinder(r=0.8*base_radius, h=base_thickness, $fn=120, center=true); } }
-
-translate([0, 0, 0*base_thickness*1.5]){ support_bottom(); }
-
-//vertical_servo();
-//horizontal_servo();
-
-
+//--------------------------------------------
 module m3(length=10)
 {
     // head
@@ -303,10 +272,135 @@ module m3(length=10)
     translate([0, 0, 0.5*length]){ cylinder(d=3, h=length, $fn=60, center=true); }
 }
 
+//--------------------------------------------
+//test in-between servos connector supported by shell/inside structure
+module top_connector(offset=0)
+{
+    translate([0,0,90+offset])
+    {
+        //scale([0.9,1.2,1.0])
+        difference()
+        {
+            union()
+            {
+                sphere(r=40, $fn=120, center=true);
+                translate([0,50,20])
+                {
+                    rotate([-60,0,0]){ translate([0,-14,-30]){ cube([58,40,40],center=true); } }
+                }
+            }
+            translate([0,0,-25]){ cube([80,80,40],center=true); }
+            translate([0,-10,30]){ rotate([30,0,0]){ cube([80,100,30],center=true); } }
+            translate([-38,0,20]){ cube([15,80,40],center=true); }
+            translate([38,0,20]){ cube([15,80,40],center=true); }
+            translate([0,45,20]) rotate([15,0,0]){ cube([62,22,35], center=true); }
+            translate([0,30,34]) rotate([-30,0,0]){ translate([0,0,0]) cube([62,10,10], center=true); }
+            
+            color([1.0,0.0,0.0])
+            {
+                translate([0,0,0]) rotate([30,0,0]){ cube([62,30,15], center=true); }
+                translate([0,8,-3]) rotate([60,0,0]){ cube([62,30,15], center=true); }
+            }
+            translate([27,37,17]) rotate([0*15,0*15,-45]){ cube([25,15,34], center=true); }
+            translate([15,40,17]) rotate([0,0,-20]){ cube([35,10,34], center=true); }
+            translate([-27,37,17]) rotate([0,0,45]){ cube([25,15,34], center=true); }
+            translate([-15,40,17]) rotate([0,0,20]){ cube([35,10,34], center=true); }
+        }
+    }
+}
 
+//--------------------------------------------
 
+module top_neck_holder(offset=0)
+{
+    translate([0,0,90+offset])
+    {
+        difference()
+        {
+            cylinder(h=15, r=42, $fn=120, center=true);
+            translate([0,0,2]){ cylinder(h=15, r=40, $fn=120, center=true); }
+            translate([0,0,2]){ rotate([5,0,0]){ cylinder(r=45, h=10); } }
+        }
+        #cylinder(r1=10,r2=7,h=10, $fn=120, center=true);
+    }
+}
+
+//--------------------------------------------
+// Head
+module face()
+{
+    rotate([0,0,-90])
+    {
+        translate([25.,0.,170])
+        {
+            rotate([0,60,0])
+            {
+                head_top_shell(head_long_radius, head_thickness, head_color=color_vec[4]);
+            }
+        }
+    }
+}
+//--------------------------------------------
+/* //screw tests
 translate([0,-10, 1.20]){ m3(10); }
-/*
 m3(16);
 translate([0,10,0]){ m3(40); }
 */
+//--------------------------------------------
+// ACTIVATE PARTS :
+base_bool = true;
+neck_bool = true;
+head_bool = true;
+
+//--------------------------------------------
+// Plates base :
+
+if( base_bool ){ translate([0,0,base_thickness*0.5]){ base(); } }
+if( base_bool )
+{
+    translate([0,0,base_thickness*1.5])
+    {
+        color([1.0, 0.75, 0.0]){ cylinder(r=0.8*base_radius, h=base_thickness, $fn=120, center=true); }
+    }
+}
+
+base_foot_angle = 45;
+if( base_bool )
+{
+    color(color_vec[4])
+    {
+        // leg/foot
+        rotate([0,0, base_foot_angle+0]){ translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
+        rotate([0,0, base_foot_angle+90]){ translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
+        rotate([0,0, base_foot_angle+180]){  translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
+        rotate([0,0, base_foot_angle+270]){  translate([0, 11+base_radius+2, 7.5]){ leg(shell_resolution); } }
+        
+        // foot connector
+        rotate([0,0, base_foot_angle+0]){ translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
+        rotate([0,0, base_foot_angle+90]){ translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
+        rotate([0,0, base_foot_angle+180]){  translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
+        rotate([0,0, base_foot_angle+270]){  translate([0, base_radius, 9]){ cube([10,8,15], center=true); } }
+    }
+}
+
+//--------------------------------------------
+// Bottom servo support
+// base_thickness*1.5
+if( neck_bool ){ translate([0, 0, base_thickness*5.5]){ support_bottom(); } }
+if( neck_bool ){ vertical_servo(); }
+if( neck_bool ){ color([0.5,0.5,1.0]) top_neck_holder(10); }
+
+if( head_bool ){ top_connector(10); }
+if( head_bool ){ horizontal_servo(); }
+if( head_bool ){ face(); }
+
+
+
+/*
+// Dump
+scale([0.7,1.1,1.0]) cylinder(r=40, h=100, $fn=120, center=true);
+//sphere(r=40, $fn=120, center=true);
+translate([0,0,-25]){ cube([80,90,40],center=true); }
+translate([0,-10,40]){ rotate([30,0,0]){ cube([80,110,40],center=true); } }
+*/
+  
