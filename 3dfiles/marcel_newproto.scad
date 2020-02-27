@@ -321,8 +321,9 @@ module top_neck_holder(offset=0)
             translate([0,0,2]){ cylinder(h=15, r=40, $fn=120, center=true); }
             translate([0,0,2]){ rotate([5,0,0]){ cylinder(r=45, h=10); } }
         }
-        #cylinder(r1=10,r2=7,h=10, $fn=120, center=true);
+        cylinder(r1=10,r2=7,h=10, $fn=120, center=true);
     }
+    translate([0,0,100+offset]){ cylinder(r=3, h=10, $fn=120, center=true); }
 }
 
 //--------------------------------------------
@@ -390,7 +391,7 @@ if( neck_bool ){ translate([0, 0, base_thickness*5.5]){ support_bottom(); } }
 if( neck_bool ){ vertical_servo(); }
 if( neck_bool ){ color([0.5,0.5,1.0]) top_neck_holder(10); }
 
-if( head_bool ){ top_connector(10); }
+//if( head_bool ){ top_connector(10); }
 if( head_bool ){ horizontal_servo(); }
 if( head_bool ){ face(); }
 
