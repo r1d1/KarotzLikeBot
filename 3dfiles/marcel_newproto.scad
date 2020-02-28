@@ -322,8 +322,35 @@ module top_neck_holder(offset=0)
             translate([0,0,2]){ rotate([5,0,0]){ cylinder(r=45, h=10); } }
         }
         cylinder(r1=10,r2=7,h=10, $fn=120, center=true);
+        translate([0,0,10]){ cylinder(r=3, h=10, $fn=120, center=true); }
+        
+        radius = 38;
+        angles = [65, 115];
+        points = [for(a = [angles[0]:1:angles[1]]) [radius * cos(a), radius * sin(a)]];
+        translate([0,0,-42.5-40+offset])
+        {
+            difference()
+            {
+                linear_extrude(65) polygon(concat([[0, 0]], points));
+                translate([0,12, 32])
+                {
+                    cube([50,26,67], center=true);
+                    translate([0, 13.5+0.5, -7]){ cube([20,5,55], center=true); }
+                }
+                translate([5,37,10]){ rotate([90,0,0]){ m3(16); } }
+                translate([5,37,20]){ rotate([90,0,0]){ m3(16); } }
+                translate([5,37,30]){ rotate([90,0,0]){ m3(16); } }
+                translate([5,37,40]){ rotate([90,0,0]){ m3(16); } }
+                translate([-5,37,10]){ rotate([90,0,0]){ m3(16); } }
+                translate([-5,37,20]){ rotate([90,0,0]){ m3(16); } }
+                translate([-5,37,30]){ rotate([90,0,0]){ m3(16); } }
+                translate([-5,37,40]){ rotate([90,0,0]){ m3(16); } }
+                
+                translate([0,37,-3]){ rotate([45,0,0]){ cube([35,25,10], center=true) ; } }
+            }
+        }
     }
-    translate([0,0,100+offset]){ cylinder(r=3, h=10, $fn=120, center=true); }
+    
 }
 
 //--------------------------------------------
@@ -391,7 +418,7 @@ if( neck_bool ){ translate([0, 0, base_thickness*5.5]){ support_bottom(); } }
 if( neck_bool ){ vertical_servo(); }
 if( neck_bool ){ color([0.5,0.5,1.0]) top_neck_holder(10); }
 
-//if( head_bool ){ top_connector(10); }
+if( head_bool ){ top_connector(10); }
 if( head_bool ){ horizontal_servo(); }
 if( head_bool ){ face(); }
 
