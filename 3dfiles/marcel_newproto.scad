@@ -241,7 +241,7 @@ module vertical_servo()
 // Horizontal servo
 module horizontal_servo()
 {
-    translate([0, 0, 150])
+    translate([0, 0, 148])
     {
         // Top joint
         translate([0, (length_side_big - 10)*1, 0])
@@ -279,6 +279,7 @@ module top_connector(offset=0)
     translate([0,0,90+offset])
     {
         //scale([0.9,1.2,1.0])
+
         difference()
         {
             union()
@@ -289,22 +290,44 @@ module top_connector(offset=0)
                     rotate([-60,0,0]){ translate([0,-14,-30]){ cube([58,40,40],center=true); } }
                 }
             }
-            translate([0,0,-25]){ cube([80,80,40],center=true); }
+            translate([0,0,-25]){ cube([80,80,40], center=true); }
             translate([0,-10,30]){ rotate([30,0,0]){ cube([80,100,30],center=true); } }
-            translate([-38,0,20]){ cube([15,80,40],center=true); }
-            translate([38,0,20]){ cube([15,80,40],center=true); }
-            translate([0,45,20]) rotate([15,0,0]){ cube([62,22,35], center=true); }
-            translate([0,30,34]) rotate([-30,0,0]){ translate([0,0,0]) cube([62,10,10], center=true); }
+            translate([-38,0,20]){ cube([15,80,40], center=true); }
+            translate([38,0,20]){ cube([15,80,40], center=true); }
+            translate([0,45,20]){ rotate([15,0,0]){ cube([62,22,35], center=true); } }
+            translate([0,30,34]){ rotate([-30,0,0]){ translate([0,0,0]) cube([62,10,10], center=true); } }
             
             color([1.0,0.0,0.0])
             {
-                translate([0,0,0]) rotate([30,0,0]){ cube([62,30,15], center=true); }
-                translate([0,8,-3]) rotate([60,0,0]){ cube([62,30,15], center=true); }
+                //#rotate([30,0,0]){ translate([0,5,6]) cube([61.1,20,6], center=true); }
+                //#translate([0,8,-3]) rotate([60,0,0]){ translate([0, 10, 0]) cube([61.1,8,15], center=true); }
+                //#translate([0, 5, 0]){ cube([61,25,9], center=true); }
+                //scale([1.2, 0.9, 1.0]){ translate([0, 5, 2.55]){ cylinder(r=31, h=5, $fn=120, center=true); } }
             }
+            translate([0,0,-4]) cylinder(r=30, h=10, center=true, $fn=120);
+            
+            // Back shape
             translate([27,37,17]) rotate([0*15,0*15,-45]){ cube([25,15,34], center=true); }
             translate([15,40,17]) rotate([0,0,-20]){ cube([35,10,34], center=true); }
             translate([-27,37,17]) rotate([0,0,45]){ cube([25,15,34], center=true); }
             translate([-15,40,17]) rotate([0,0,20]){ cube([35,10,34], center=true); }
+            
+            translate([0, 0, 17])
+            {
+                union()
+                rotate([90,-30,90])
+                {
+                    translate([15, 1,  0]){ cube([20.5,5,55.5], center=true); }
+                    translate([20, 1,-15]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([20, 1, -5]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([20, 1,  5]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([20, 1, 15]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([10, 1,-15]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([10, 1, -5]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([10, 1,  5]){ rotate([90, 0, 0]){ m3(16); } }
+                    translate([10, 1, 15]){ rotate([90, 0, 0]){ m3(16); } }
+                }
+            }
         }
     }
 }
@@ -329,6 +352,7 @@ module top_neck_holder(offset=0)
         points = [for(a = [angles[0]:1:angles[1]]) [radius * cos(a), radius * sin(a)]];
         translate([0,0,-42.5-40+offset])
         {
+            #union()
             difference()
             {
                 linear_extrude(65) polygon(concat([[0, 0]], points));
@@ -376,9 +400,9 @@ translate([0,10,0]){ m3(40); }
 */
 //--------------------------------------------
 // ACTIVATE PARTS :
-base_bool = true;
-neck_bool = true;
-head_bool = true;
+base_bool = false;
+neck_bool = false;
+head_bool = false;
 
 //--------------------------------------------
 // Plates base :
@@ -422,6 +446,23 @@ if( head_bool ){ top_connector(10); }
 if( head_bool ){ horizontal_servo(); }
 if( head_bool ){ face(); }
 
+
+//rotate([30,0,0]){ translate([0,0,0]) cube([61.1,20,6], center=true); }
+//translate([0,0,0]) rotate([60,0,0]){ translate([0, 10, 0]) cube([61.1,8,15], center=true); }
+//translate([0, 5, 0]){ cube([61,25,9], center=true); }
+//scale([1.2, 0.9, 1.0]){ translate([0, 5, 2.55]){ cylinder(r=31, h=5, $fn=120, center=true); } }
+//translate([0,0,0]) cylinder(r=30, h=10, center=true, $fn=120);
+//radius = 20;
+angles2 = [0, 30];
+//points2 = [for(a = [angles2[0]:1:angles2[1]]) [radius * cos(a), radius * sin(a)]];
+hole_length = 20;
+points2 = [for(a = [angles2[0]:1:angles2[1]]) [hole_length * cos(a), hole_length* sin(a), 0]];
+points3 = concat([[0,0,0], [0.5*hole_length*cos(30), 0.5*hole_length*sin(30), 0], [0.5*hole_length*cos(30),0,0]]);
+//rotate([0,0,0]){ linear_extrude(5) polygon(concat([[10, 0]], points2)); }
+for(p=points3)
+{
+    translate(p){ sphere(r=0.5, $fn=60); }
+}
 
 
 /*
