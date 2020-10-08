@@ -21,6 +21,10 @@ Most of the files for this project are available on [Github](https://github.com/
 
 Project logs are available on [Robot-Maker](https://www.robot-maker.com/forum/topic/12548-project-marcel/) (FR).
 
+# Development overview
+
+<img alt="elec_bulk" src="images/20190226_Marcel_elec_v0p1.jpg"  style="margin-left: 25px; margin-right: auto; display: inline; height: 300px;" />
+<img alt="elec_bulk" src="images/20200623_openscad_innerwip.png"  style="margin-left: 5px; margin-right: auto; display: inline; height: 300px;" />
 
 <!-- 
 | Time | Activity |
